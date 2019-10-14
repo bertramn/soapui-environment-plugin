@@ -1,0 +1,21 @@
+---
+dev:
+  subsystem:
+    zero:
+      username: dev-user
+tst:
+  subsystem:
+    one:
+      username: one-user
+      level: 5
+      flattened_property: one-flattened-and-nested
+      some_list:
+        - A
+        - B
+        - C
+    two:
+      username: two-user
+'fancy production':
+   subsystem:
+     one:
+       username: fancy-one-user

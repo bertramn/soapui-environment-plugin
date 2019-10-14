@@ -1,0 +1,18 @@
+---
+development:
+  username: dieter
+  password: dsecret
+  flattened_nested_property: dnested
+test:
+  username: tim
+  password: tsecret
+  flattened_nested_property: tnested
+staging:
+  username: stephen
+  password: ssecret
+  flattened_nested_property: snested
+production:
+  username: paul
+  password: psecret
+  flattened_nested_property: pnested
+
