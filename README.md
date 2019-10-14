@@ -6,7 +6,7 @@ This plugin extends the default project and adds capabilities
 
 1. Create a `~/.soapuios/plugins` folder
 
-2. Download the [`soapui-environment-plugin-1.0.0-alpha.jar`](https://github.com/bertram/soapui-environment-plugin/releases/1.0.0/soapui-environment-plugin-1.0.0-alpha.jar) and copy to `~/.soapuios/plugins` folder
+2. Download the [`soapui-environment-plugin-1.0.0.jar`](https://github.com/bertramn/soapui-environment-plugin/releases/download/v1.0.0-alpha/soapui-environment-plugin-1.0.0.jar) and copy to `~/.soapuios/plugins` folder
 
 3. Download dependencies and copy to into `${SOAPUI_HOME}/lib` folder
 
