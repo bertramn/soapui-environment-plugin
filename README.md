@@ -1,24 +1,31 @@
 # SoapUI Environment Plugin
 
-This plugin extends the default project and adds capabilities
+This plugin extends the default SoapUI project and adds capabilities to inject properties that are managed outside the SoapUI workspace. This feature works similar to the [String Boot Dev Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools) just without the sophistication.
 
 ## Installation
 
+These instructions work with SoapUI 5.7.0. For older versions see prior commits. 
+
 1. Create a `~/.soapuios/plugins` folder
 
-2. Download the [`soapui-environment-plugin-1.0.0.jar`](https://github.com/bertramn/soapui-environment-plugin/releases/download/v1.0.0-alpha/soapui-environment-plugin-1.0.0.jar) and copy to `~/.soapuios/plugins` folder
+2. Download the [`soapui-environment-plugin-1.0.1.jar`](https://github.com/bertramn/soapui-environment-plugin/releases/download/v1.0.1-alpha/soapui-environment-plugin-1.0.1.jar) and copy to `~/.soapuios/plugins` folder
 
-3. Download dependencies and copy to into `${SOAPUI_HOME}/lib` folder
+3. Download dependencies and copy them into the `${SOAPUI_HOME}/lib` folder
 
-    * [snakeyaml-1.17.jar](https://search.maven.org/remotecontent?filepath=org/yaml/snakeyaml/1.17/snakeyaml-1.17.jar)
-    * [rsyntaxtextarea-3.0.4.jar](https://search.maven.org/remotecontent?filepath=com/fifesoft/rsyntaxtextarea/3.0.4/rsyntaxtextarea-3.0.4.jar)
-
-    or install dependencies from local maven cache
-      
+    * [snakeyaml-2.0.jar](https://search.maven.org/remotecontent?filepath=org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar)
+    * [rsyntaxtextarea-3.3.3.jar](https://search.maven.org/remotecontent?filepath=com/fifesoft/rsyntaxtextarea/3.3.3/rsyntaxtextarea-3.3.3.jar)
+ 
     ```sh
-    cp ~/.m2/repository/org/yaml/snakeyaml/1.17/snakeyaml-1.17.jar /Applications/SoapUI-5.5.0.app/Contents/java/app/lib/.
-    cp ~/.m2/repository/com/fifesoft/rsyntaxtextarea/3.0.4/rsyntaxtextarea-3.0.4.jar /Applications/SoapUI-5.5.0.app/Contents/java/app/lib/.
+    cp ~/Downloads/snakeyaml-2.0.jar /Applications/SoapUI-5.7.0.app/Contents/java/app/lib/.
+    cp ~/Downloads/rsyntaxtextarea-3.3.3.jar /Applications/SoapUI-5.7.0.app/Contents/java/app/lib/.
     ```
+
+**IMPORTANT**: SoapUI 5.7.0 contains 2 similar but different XMLBeans implementations. You will need to delete `xmlbeans-xpath-2.6.0.jar` from the `${SOAPUI_HOME}/lib` folder. The `xmlbeans-3.1.1-sb-fixed.jar` is the only one that should be present. TL;DR having both will screw up your XQueries and spotting the root cause when things fail is hard. 
+
+  ```sh
+  rm -f /Applications/SoapUI-5.7.0.app/Contents/java/app/lib/xmlbeans-xpath-2.6.0.jar
+  ```
+
 
 ## External Configuration File
 

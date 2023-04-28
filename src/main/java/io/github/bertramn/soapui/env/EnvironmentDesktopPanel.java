@@ -6,7 +6,8 @@ import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.ui.support.DefaultDesktopPanel;
 import com.jgoodies.forms.builder.ButtonBarBuilder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
@@ -23,7 +24,7 @@ import static java.util.Optional.ofNullable;
 
 public class EnvironmentDesktopPanel extends DefaultDesktopPanel {
 
-  private static final Logger log = Logger.getLogger(EnvironmentDesktopPanel.class);
+  private static final Logger log = LogManager.getLogger(EnvironmentDesktopPanel.class);
 
   private final WsdlProject project;
 
@@ -37,7 +38,7 @@ public class EnvironmentDesktopPanel extends DefaultDesktopPanel {
     super("Environments", "Set project properties from external configuration.", new JPanel(new BorderLayout()));
     this.project = project;
     this.environmentManager = environmentManager;
-    this.loadIcon("/io/github/bertramn/soapui/env/Environment.png");
+    this.loadIcon("io/github/bertramn/soapui/env/Environment.png");
     this.buildUI();
   }
 

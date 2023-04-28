@@ -6,13 +6,13 @@ import com.eviware.soapui.model.propertyexpansion.PropertyExpansionContext;
 import com.eviware.soapui.model.propertyexpansion.resolvers.PropertyResolver;
 import com.eviware.soapui.model.testsuite.TestCaseRunContext;
 import com.eviware.soapui.plugins.auto.PluginPropertyResolver;
-import com.google.inject.Guice;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @PluginPropertyResolver
 public class EnvironmentPropertyResolver implements PropertyResolver {
 
-  private final static Logger log = Logger.getLogger(EnvironmentPropertyResolver.class);
+  private final static Logger log = LogManager.getLogger(EnvironmentPropertyResolver.class);
 
   EnvironmentManager environmentManager;
 

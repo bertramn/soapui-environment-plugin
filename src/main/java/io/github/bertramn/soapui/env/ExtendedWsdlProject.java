@@ -23,6 +23,8 @@ import java.util.List;
 
 public class ExtendedWsdlProject extends WsdlProject {
 
+  public final static String ENVIRONMENT_PROPERTY = ExtendedWsdlProject.class.getName() + "@environment";
+
   public ExtendedWsdlProject() throws XmlException, IOException, SoapUIException {
   }
 
@@ -50,16 +52,12 @@ public class ExtendedWsdlProject extends WsdlProject {
     super(inputStream, workspace);
   }
 
-  @Override
-  public void loadProject(URL file) throws SoapUIException {
-    super.loadProject(file);
-  }
-
   protected void initializeActiveEnvironment() {
     String envName = this.getConfig().getActiveEnvironment();
     this.setActiveEnvironment(new BasicEnvironment(envName, this));
   }
 
+  @Override
   public SoapuiProjectDocumentConfig loadProjectFromInputStream(InputStream inputStream) throws XmlException, IOException, GeneralSecurityException {
     projectDocument = SoapuiProjectDocumentConfig.Factory.parse(inputStream);
     inputStream.close();
@@ -146,8 +144,8 @@ public class ExtendedWsdlProject extends WsdlProject {
     return projectDocument;
   }
 
-  @Override
-  public boolean isEnvironmentMode() {
-    return super.isEnvironmentMode();
+  public String getEnvironment() {
+    return this.getConfig().getActiveEnvironment();
   }
+
 }

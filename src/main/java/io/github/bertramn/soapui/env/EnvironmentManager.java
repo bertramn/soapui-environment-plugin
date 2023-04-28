@@ -7,10 +7,10 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.apache.commons.collections.Buffer;
 import org.apache.commons.collections.BufferUtils;
 import org.apache.commons.collections.buffer.CircularFifoBuffer;
-import org.apache.log4j.Logger;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.File;
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public class EnvironmentManager implements WorkspaceListener {
 
-  private static final Logger log = Logger.getLogger(EnvironmentManager.class);
+  private static final Logger log = LogManager.getLogger(EnvironmentManager.class);
 
   private final Map<String, Map<String, Object>> environments = new HashMap<>();
 
@@ -67,9 +67,11 @@ public class EnvironmentManager implements WorkspaceListener {
   private void loadConfiguration(@Nonnull final Path file) {
 
     try {
-      Map<String, Map<String, Object>> values = (Map<String, Map<String, Object>>) yaml.load(new FileInputStream(file.toFile()));
+      Map<String, Map<String, Object>> values = yaml.load(new FileInputStream(file.toFile()));
       environments.clear();
-      environments.putAll(values);
+      if(values != null) {
+        environments.putAll(values);
+      }
     } catch (FileNotFoundException e) {
       log.error("Failed to load " + file.toString(), e);
     }
